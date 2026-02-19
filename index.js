@@ -1,3 +1,9 @@
+// document.getElementById("all-product-category").style.display = "none";
+
+
+// ..........trendings are here..............*:
+
+
 const loadTrendings = () => {
     const url = "https://fakestoreapi.com/products?limit=3";
      fetch(url)
@@ -19,7 +25,7 @@ const showTrendings = (products) => {
         const div = document.createElement("div");
         div.innerHTML = `   
            <div class="card bg-base-100 w-96 shadow-sm flex items-center justify-center rounded-xl">
-                       <div class="w-full h-96 bg-slate-600 items-center justify-center">
+                       <div class="w-full h-96 bg-slate-200 items-center justify-center">
                           <img class="w-full h-full p-4 object-contain"
                              src="${product.image}"
                              alt="${product.title}" />
@@ -48,7 +54,85 @@ const showTrendings = (products) => {
     }
 };
 
+//................  categories are here..........................
+
+const loadCategories = async() =>{
+    const response = await fetch("https://fakestoreapi.com/products/categories");
+    const data = await response.json();
+    showCategories(data)
+}
+
+
+const showCategories = (categories) => {
+
+
+    const categoryContainer = document.getElementById("category-Container");
+
+    for (let cat of categories){
+        const categoryBtn = document.createElement("div");
+        categoryBtn.innerHTML= `
+        <button class="btn rounded-3xl">${cat}</button>
+        `   
+             categoryContainer.appendChild(categoryBtn);
+
+    }
+
+}
+
+
+const loadProducts = () => {
+    const url = "https://fakestoreapi.com/products";
+     fetch(url)
+    .then(res => res.json())
+    .then((data) => showProducts(data))
+    // console.log(data)     
+
+};
+
+
+const showProducts = (products) => {
+     
+    const allProductsContainer = document.getElementById("all-product-Container");
+    allProductsContainer.innerHTML ="";
+    for (let product  of products) {
+
+        const div = document.createElement("div");
+        div.innerHTML = `   
+           <div class="card bg-base-100 w-96 shadow-sm flex items-center justify-center rounded-xl">
+                       <div class="w-full h-96 bg-slate-200 items-center justify-center">
+                          <img class="w-full h-full p-4 object-contain"
+                             src="${product.image}"
+                             alt="${product.title}" />
+                        
+                       </div>
+                     <div class="card-body mt-2">
+                            <div class="flex text-center justify-between">
+                                <span>
+                                    <h2 class="text-blue-700 font-semibold px-2 rounded-xl bg-blue-200">${product.category}</h2>
+                                </span> 
+                                <span class="flex gap-2">
+                                    <p><span><i class="text-yellow-300 fa-regular fa-star mr-1"></i></span>${product.rating.rate}</p>
+                                    <p>(${product.rating.count})</p>
+                                </span>
+                            </div>
+                                 <p class="mt-2 font-bold">${product.title}</p>
+                                 <p class="text-xl font-bold mt-2">$${product.price}</p>
+                     <div class="card-actions justify-between mt-3">
+                        <button type="submit" class="btn w-40"><span><i class="fa-regular fa-eye"></i></span>Details</button>
+                        <button class="btn btn-primary w-40"><span><i class="fa-solid fa-cart-shopping"></i></span>Add</button>
+                     </div>
+                  </span>
+            </div>
+        `
+        allProductsContainer.appendChild(div)
+    }
+};
+
+
 loadTrendings()
+loadCategories()
+loadProducts()
+
 
 
 
