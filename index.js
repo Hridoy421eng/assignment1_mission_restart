@@ -1,8 +1,31 @@
-// document.getElementById("all-product-category").style.display = "none";
+document.getElementById("all-product-category").style.display = "none";
+
+const homeBtn = document.querySelectorAll(".home-btn");
+const productBtn = document.querySelectorAll(".products-btn");
+console.log(productBtn);
+
+
+
+
+// Home button functionality
+homeBtn.forEach(btn => {
+    btn.addEventListener("click", (e) => {
+    e.preventDefault();
+    // console.log('Home button clicked')
+
+    // Hide products section
+    document.getElementById("all-product-category").style.display = "none";
+  
+    // Show banner and trending sections
+    const elements = document.getElementsByClassName("hide-active-products");
+    for (let el of elements){
+        el.style.display = "block";
+    }
+});
+});
 
 
 // ..........trendings are here..............*:
-
 
 const loadTrendings = () => {
     const url = "https://fakestoreapi.com/products?limit=3";
@@ -127,6 +150,23 @@ const showProducts = (products) => {
         allProductsContainer.appendChild(div)
     }
 };
+
+productBtn.forEach(btn =>{
+    btn.addEventListener("click", (e) => {
+    e.preventDefault();
+    console.log('Products button clicked')
+
+
+  document.getElementById("all-product-category").style.display = "block";
+  
+  const elements = document.getElementsByClassName("hide-active-products");
+   for (let el of elements){
+    console.log(el)
+    
+       el.style.display = "none";
+   }
+});
+});
 
 
 loadTrendings()

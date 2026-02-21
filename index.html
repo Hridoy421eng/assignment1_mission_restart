@@ -35,21 +35,26 @@
                                     <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
                                          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" /> </svg>
                                     </div>
+
+                                    <!--  mobile view buttons here......... -->
                                         <ul
                                           tabindex="-1"
                                           class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-0 w-52 p-2 shadow">
-                                            <li><a href="" class="font-bold text-gray-600">Home</a></li>
-                                            <li><a href="" class="font-bold text-gray-600">Products</a></li>
+                                            <li><a href="" class="home-btn font-bold text-gray-600">Home</a></li>
+                                            <li><a href="" class="products-btn font-bold text-gray-600">Products</a></li>
                                             <li><a href="" class="font-bold text-gray-600">About</a></li>
                                             <li><a href="" class="font-bold text-gray-600">Contact</a></li>
                                         </ul>   
                                 </div>
                             </div>    
                 </div>
+                           
+                            <!--       desktop buttons here............. -->
+
                     <div class="navbar-center hidden lg:flex">
                         <ul class="flex gap-5 px-1">
-                            <li><a href="" class="font-bold text-gray-600">Home</a></li>
-                            <li><a href="" class="font-bold text-gray-600">Products</a></li>
+                            <li><a href="" class="home-btn font-bold text-gray-600">Home</a></li>
+                            <li><a href="" class="products-btn font-bold text-gray-600">Products</a></li>
                             <li><a href="" class="font-bold text-gray-600">About</a></li>
                             <li><a href="" class="font-bold text-gray-600">Contact</a></li>
                         </ul>
@@ -67,7 +72,7 @@
 
                            <!--  banner  section starts here ......... -->
 
-        <div class="banner pl-5 pt-50 lg:pl-80 lg:pt-50">
+        <div id="banner-sec" class="banner hide-active-products pl-5 pt-50 lg:pl-80 lg:pt-50">
             <h2 class="text-3xl lg:text-5xl font-bold text-white">Best Collection For You</h2>
             <p class="text-white mt-5">Discover the latest tends in fashion, electronics, and more. Shop with <br> confidence and style at SwiftCart.</p>
             <button class="btn btn-active btn-primary mt-5">Shop Now</button>
@@ -75,7 +80,7 @@
      
                            <!--   why choose/service       Cards        section here...... -->
 
-        <div class="h-[180vh] lg:h-[70vh] bg-slate-100">
+        <div id="why-choose-card" class="hide-active-products h-[180vh] lg:h-[70vh] bg-slate-100">
              <h1 class="pt-10 text-3xl lg:text-5xl font-bold text-center">Why Choose us</h1>
              <p class="pt-5 text-xl font-medium text-gray-500 text-center">We provide the shopping experience with top-notch service</p>
 
@@ -116,7 +121,7 @@
                            <!--         Trendings ProduCts here ........... -->
 
     <section>
-           <div>
+           <div id="trending-sec" class="hide-active-products">
               <h1 class="h-[10vh] text-3xl lg:text-5xl font-bold text-center mt-10">Trending Now</h1>
 
                             <!-- trending cards container.................... -->
@@ -130,7 +135,7 @@
 
     <section>
         
-             <div id="all-product-category">
+             <div id="all-product-category" class="">
                  <h1 class="h-[10vh] text-3xl lg:text-5xl font-bold text-center mt-10">Our Products</h1>  
                  
                    <div id="category-Container" class="grid gap-1 lg:gap-5 justify-center mt-10 
