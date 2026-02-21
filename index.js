@@ -2,12 +2,21 @@ document.getElementById("all-product-category").style.display = "none";
 
 const homeBtn = document.querySelectorAll(".home-btn");
 const productBtn = document.querySelectorAll(".products-btn");
-console.log(productBtn);
+
+const navButtons = document.querySelectorAll(".nav-btn");
+navButtons.forEach(button => {
+    button.addEventListener("click", function() {
+        navButtons.forEach(btn => btn.classList.remove("active"));
+        this.classList.add("active");
+    })
+});
+// console.log(productBtn);
 
 
 
 
-// Home button functionality
+// Home button functionality.............
+
 homeBtn.forEach(btn => {
     btn.addEventListener("click", (e) => {
     e.preventDefault();
@@ -16,13 +25,22 @@ homeBtn.forEach(btn => {
     // Hide products section
     document.getElementById("all-product-category").style.display = "none";
   
-    // Show banner and trending sections
+    // Show banner and trending sections.............
     const elements = document.getElementsByClassName("hide-active-products");
     for (let el of elements){
         el.style.display = "block";
     }
 });
 });
+
+
+function removeActiveClass(){
+    const activeButtons = document.getElementsByClassName("active");
+    for(let btn of activeButtons){
+        btn.classList.remove("active");
+    }
+}
+
 
 
 // ..........trendings are here..............*:
@@ -83,6 +101,11 @@ const loadCategories = async() =>{
     const response = await fetch("https://fakestoreapi.com/products/categories");
     const data = await response.json();
     showCategories(data)
+
+//     function removeActiveClass(){
+//     const activeButtons = document.querySelectorAll(".active");
+//     activeButtons.forEach(btn => btn.classList.remove("active"));
+// }
 }
 
 
@@ -90,12 +113,21 @@ const showCategories = (categories) => {
 
 
     const categoryContainer = document.getElementById("category-Container");
+        categoryContainer.innerHTML = "";
+
 
     for (let cat of categories){
         const categoryBtn = document.createElement("div");
         categoryBtn.innerHTML= `
         <button class="btn rounded-3xl">${cat}</button>
-        `   
+        `   ;
+        // const button = categoryBtn.querySelector("button");
+
+        // button.addEventListener("click", () => {
+        //     removeActiveClass();
+        //     button.classList.add("active");
+        // });
+
              categoryContainer.appendChild(categoryBtn);
 
     }
@@ -151,6 +183,9 @@ const showProducts = (products) => {
     }
 };
 
+// product button functionality..........
+
+
 productBtn.forEach(btn =>{
     btn.addEventListener("click", (e) => {
     e.preventDefault();
@@ -167,6 +202,11 @@ productBtn.forEach(btn =>{
    }
 });
 });
+
+
+
+
+
 
 
 loadTrendings()
@@ -188,3 +228,4 @@ loadProducts()
 // "count": 400
 // }
 // }
+
